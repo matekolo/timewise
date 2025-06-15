@@ -3,7 +3,7 @@
 
 ## Project info
 
-A personal productivity application built with modern web technologies.
+A simple student app to manage your tasks and habits throughout the day.
 
 ## Technologies Used
 
