@@ -1,0 +1,206 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 210 40% 98%;
+    --foreground: 222.2 84% 4.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+
+    --primary: 210 100% 50%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
+
+    --radius: 0.75rem;
+    
+    /* Animation variables */
+    --transition-ease: cubic-bezier(0.25, 0.1, 0.25, 1);
+    --transition-bounce: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+
+  /* When using a custom color, the --primary-hsl CSS variable will be directly set */
+  :root:not([data-theme]) {
+    --primary: var(--primary-hsl, 210 100% 50%);
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+  }
+
+  /* Custom theme colors for dark mode */
+  .dark:not([data-theme]) {
+    --primary: var(--primary-hsl, 210 40% 98%);
+  }
+
+  [data-theme="blue"] {
+    --primary: 210 100% 50%;
+    --primary-foreground: 210 40% 98%;
+  }
+  
+  [data-theme="green"] {
+    --primary: 142 70% 45%;
+    --primary-foreground: 210 40% 98%;
+  }
+
+  [data-theme="purple"] {
+    --primary: 270 70% 60%;
+    --primary-foreground: 210 40% 98%;  
+  }
+
+  [data-theme="morning"] {
+    --primary: 30 100% 60%;
+    --primary-foreground: 210 40% 98%;
+  }
+
+  [data-theme="night"] {
+    --primary: 240 70% 50%;
+    --primary-foreground: 210 40% 98%;
+  }
+  
+  /* Gold theme for streak master achievement */
+  [data-theme="gold"] {
+    --primary: 45 100% 50%;
+    --primary-foreground: 0 0% 10%;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+  
+  .dark .glass-panel {
+    @apply backdrop-blur-md bg-gray-900/80 border-gray-800/20;
+  }
+  
+  .dark .tile {
+    @apply border-gray-800;
+  }
+  
+  .dark input, 
+  .dark textarea,
+  .dark select {
+    @apply bg-gray-800/50 border-gray-700;
+  }
+  
+  .dark .bg-white\/90 {
+    @apply bg-gray-800/90;
+  }
+  
+  .dark .hover\:bg-gray-100:hover {
+    @apply hover:bg-gray-800;
+  }
+}
+
+@layer components {
+  .glass-panel {
+    @apply backdrop-blur-md bg-white/80 dark:bg-gray-900/80 border border-white/20 dark:border-gray-800/20 shadow-lg;
+  }
+  
+  .tile {
+    @apply rounded-xl overflow-hidden transition-all duration-300 ease-out hover:shadow-md 
+           bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-800;
+  }
+  
+  .tile-content {
+    @apply p-5 h-full flex flex-col;
+  }
+  
+  .section-title {
+    @apply text-sm font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-4;
+  }
+}
+
+@layer utilities {
+  .animate-fade-in {
+    animation: fadeIn 0.5s var(--transition-ease) forwards;
+  }
+  
+  .animate-slide-up {
+    animation: slideUp 0.5s var(--transition-ease) forwards;
+  }
+  
+  .animate-scale {
+    animation: scale 0.3s var(--transition-bounce) forwards;
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  
+  @keyframes slideUp {
+    from { transform: translateY(20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+  }
+  
+  @keyframes scale {
+    from { transform: scale(0.95); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+  }
+  
+  .hover-lift {
+    @apply transition-transform duration-300;
+  }
+  
+  .hover-lift:hover {
+    transform: translateY(-4px);
+  }
+  
+  .glass {
+    @apply bg-white/80 dark:bg-gray-900/80 backdrop-blur-lg border border-white/20 dark:border-gray-800/20 shadow-sm;
+  }
+}
